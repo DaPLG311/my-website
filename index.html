@@ -693,7 +693,7 @@ function renderBrowse(filter=""){
     const matches = tier.members.filter(m=>{
       if(!f) return true;
       const t = DATA.terms[m];
-      return m.toLowerCase().includes(f) || t.what.toLowerCase().includes(f) || t.why.toLowerCase().includes(f);
+      return [m, t.what, t.why, t.ex, t.when, t.next].some(v => String(v || '').toLowerCase().includes(f));
     });
     if(!matches.length) return;
     any = true;
